@@ -36,7 +36,7 @@ class DoubleLinkedList {
         Node* insertNodeBeforeHead(char nodeValue);
 
         // inserting node before currentNode, returns node that was inputted into list
-        Node insertNodeBefore(char nodeValue);
+        Node* insertNodeBefore(char nodeValue, char pickedNodeValue);
 
         // inserting node after currentNode, returns node that was inputted into list
         Node* insertNodeAfter(char nodeValue, char pickedNodeValue);
@@ -47,11 +47,8 @@ class DoubleLinkedList {
         // iterating through list(backwards)
         void iterateBackwards();
 
-        // iterate through list to get last node
-        Node getLastNode();
-
         // deleting node
-        Node deleteNode();    
+        Node* deleteNode(char pickedNodeValue);    
 };
 
 #endif // DOUBLY_LINKED_LIST_HPP

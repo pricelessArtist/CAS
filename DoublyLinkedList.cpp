@@ -41,6 +41,7 @@ Node DoubleLinkedList::insertNode(char nodeValue) {
 Node* DoubleLinkedList::insertNodeBeforeHead(char nodeValue) {
     Node* head = firstNode;
     Node* newNode = list.allocateNewNode(nodeValue);
+
     newNode->nextNode = head;
     newNode->previousNode = NULL;
     head->previousNode = newNode;
@@ -55,16 +56,17 @@ Node* DoubleLinkedList::insertNodeBeforeHead(char nodeValue) {
 }
 
 Node* DoubleLinkedList::insertNodeAfter(char nodeValue, char pickedNodeValue) {
+    Node* head = firstNode;
     Node* newNode = list.allocateNewNode(nodeValue);
-    Node* currentNode;
-    while (firstNode != NULL) {
-        if (currentNode->element == pickedNodeValue) {
-            newNode->previousNode = currentNode;
+    while (head != NULL) {
+        if (head->element == pickedNodeValue) {
+            newNode->previousNode = head;
             newNode->nextNode = NULL;
-            currentNode->nextNode = newNode;
+            head->nextNode = newNode;
+
             break;
         }
-        currentNode = currentNode->nextNode;
+        head = head->nextNode;
     }
     lastNode = newNode;
     cout << "New node value: " << newNode->element << endl;
@@ -73,10 +75,35 @@ Node* DoubleLinkedList::insertNodeAfter(char nodeValue, char pickedNodeValue) {
     return newNode;
 }
 
+Node* DoubleLinkedList::insertNodeBefore(char nodeValue, char pickedNodeValue) {
+    Node* head = firstNode;
+    Node* newNode = list.allocateNewNode(nodeValue);
+
+    while (head != NULL) {
+        if (head->element == pickedNodeValue) {
+            newNode->previousNode = head->previousNode;
+            newNode->nextNode = head;
+            head->previousNode = newNode;
+
+            if (head->previousNode != NULL) {
+                newNode->previousNode->nextNode = newNode;
+            } else {
+                firstNode = newNode;
+            }
+
+            break;
+        }
+        head = head->nextNode;
+    }
+    lastNode = head->nextNode;
+    cout << "New node value: " << newNode->element << endl;
+    cout << "New node next node value: " << newNode->nextNode << endl;
+    cout << "New node previous node value: " << newNode->previousNode->element << endl;
+    return newNode;     
+}
 
 void DoubleLinkedList::iterateForward() {
-    Node *head = firstNode;
-
+    Node* head = firstNode;
     while (head != NULL) {
         cout << head->element;
         if (head->nextNode != NULL) {
@@ -97,4 +124,18 @@ void DoubleLinkedList::iterateBackwards() {
         tail = tail->previousNode;
     }
     cout << endl;
+}
+
+Node* DoubleLinkedList::deleteNode(char pickedNodeValue) {
+    //we look for the pickedNodeValue and then get the nodes previous and nextNode
+    Node* head = firstNode;
+
+    while (head != NULL) {
+        if (head->element == pickedNodeValue) {
+            cout << "Found element " << pickedNodeValue << endl;  
+            break;          
+        }
+        head = head->nextNode;
+    }
+    return head;
 }
