@@ -41,6 +41,9 @@ class DoubleLinkedList {
         // inserting node after currentNode, returns node that was inputted into list
         Node* insertNodeAfter(char nodeValue, char pickedNodeValue);
 
+        // inserting node at the end of the list
+        Node* insertAtEnd(char nodeValue);
+
         // iterating through list(forward)
         void iterateForward();
 

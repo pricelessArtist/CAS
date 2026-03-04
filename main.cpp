@@ -15,5 +15,10 @@ int main() {
     list.insertNodeBefore('a', '5');
     list.iterateForward();
     list.iterateBackwards();
+    list.deleteNode('a');
+    list.insertAtEnd('b');
+    list.insertAtEnd('c');
+    list.iterateForward();
+    list.iterateBackwards();
     return 0;
 }
