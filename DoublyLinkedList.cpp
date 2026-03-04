@@ -1,24 +1,100 @@
 #include <iostream>
 #include "DoublyLinkedList.hpp"
+using namespace std;
+
+DoubleLinkedList list;
+
+Node* DoubleLinkedList::allocateNewNode(char nodeValue) {
+    Node* newNode = (Node *)malloc(sizeof(Node));
+    newNode->element = nodeValue;
+    
+    return newNode;
+}
 
 Node DoubleLinkedList::insertNode(char nodeValue) {
-    Node* newNode = (Node *)malloc(sizeof(Node));
-    newNode->elements = nodeValue;
+    Node* newNode = list.allocateNewNode(nodeValue);
     
-    //we set the nodeValue to newNode.elements, then we set it to firstNode
     if (firstNode == NULL) {
-        newNode->previousNode = nullptr;
-        newNode->nextNode = nullptr;
+        newNode->previousNode = NULL;
+        newNode->nextNode = NULL;
         firstNode = newNode;
-    }
+        lastNode = newNode;
+    } else {
+        Node* headNode = firstNode;
+        Node* nextNode = (Node *)realloc(newNode, sizeof(Node));
+        nextNode->element = nodeValue;
+        nextNode->previousNode = headNode;
+        headNode->nextNode = nextNode;
+        lastNode = nextNode;
 
-    newNode->nextNode = this->firstNode;
-    this->firstNode = newNode;
+        cout << "Next node previous node: " << nextNode->previousNode->element << endl;
+        cout << "Next node current value: " << nextNode->element << endl;
+        cout << "Head node: " << headNode->element << endl;
+        cout << " " << endl;
+    } 
+    
     
     Node currentNode = *newNode;
-    std::cout << "First Node: " << firstNode->elements << std::endl;
-    std::cout << "CurrentNode: " << currentNode.elements << std::endl;
-    std::cout << "CurrentNode Next Node: " << currentNode.nextNode->elements << std::endl;
-    std::cout << "CurrentNode Previous Node: " << currentNode.previousNode << std::endl;
     return currentNode;
+}
+
+Node* DoubleLinkedList::insertNodeBeforeHead(char nodeValue) {
+    Node* head = firstNode;
+    Node* newNode = list.allocateNewNode(nodeValue);
+    newNode->nextNode = head;
+    newNode->previousNode = NULL;
+    head->previousNode = newNode;
+    lastNode = head;
+    firstNode = newNode;
+
+    cout << "New head node: " << newNode->element << endl;
+    cout << "New head previous node: " << newNode->previousNode << endl;
+    cout << "New head next node: " << newNode->nextNode->element << endl;
+    cout << "Last node: " << lastNode->element << endl;
+    return newNode;
+}
+
+Node* DoubleLinkedList::insertNodeAfter(char nodeValue, char pickedNodeValue) {
+    Node* newNode = list.allocateNewNode(nodeValue);
+    Node* currentNode;
+    while (firstNode != NULL) {
+        if (currentNode->element == pickedNodeValue) {
+            newNode->previousNode = currentNode;
+            newNode->nextNode = NULL;
+            currentNode->nextNode = newNode;
+            break;
+        }
+        currentNode = currentNode->nextNode;
+    }
+    lastNode = newNode;
+    cout << "New node value: " << newNode->element << endl;
+    cout << "New node next node value: " << newNode->nextNode << endl;
+    cout << "New node previous node value: " << newNode->previousNode->element << endl;
+    return newNode;
+}
+
+
+void DoubleLinkedList::iterateForward() {
+    Node *head = firstNode;
+
+    while (head != NULL) {
+        cout << head->element;
+        if (head->nextNode != NULL) {
+            cout << " <--> ";
+        }
+        head = head->nextNode;
+    }
+    cout << endl;
+}
+
+void DoubleLinkedList::iterateBackwards() {
+    Node* tail = lastNode;
+    while (tail != NULL) {
+        cout << tail->element;
+        if (tail->previousNode != NULL) {
+            cout << " <--> ";
+        }
+        tail = tail->previousNode;
+    }
+    cout << endl;
 }

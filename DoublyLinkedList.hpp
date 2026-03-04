@@ -10,7 +10,7 @@ struct Node {
     struct Node* previousNode = NULL;
 
     //node data value
-    char elements = NULL;
+    char element = NULL;
 
     //next Node Pointer
     struct Node* nextNode = NULL;
@@ -27,20 +27,28 @@ class DoubleLinkedList {
             lastNode = NULL;
         }
         
+        Node* allocateNewNode(char nodeValue);
+
         // inserting node, returns node that was inputted into list
         Node insertNode(char nodeValue);
 
+        // inserting node at the head, returns node that we inputted into the list
+        Node* insertNodeBeforeHead(char nodeValue);
+
         // inserting node before currentNode, returns node that was inputted into list
-        Node insertNodeBefore();
+        Node insertNodeBefore(char nodeValue);
 
         // inserting node after currentNode, returns node that was inputted into list
-        Node insertNodeAfter();
+        Node* insertNodeAfter(char nodeValue, char pickedNodeValue);
 
         // iterating through list(forward)
         void iterateForward();
 
         // iterating through list(backwards)
         void iterateBackwards();
+
+        // iterate through list to get last node
+        Node getLastNode();
 
         // deleting node
         Node deleteNode();    
