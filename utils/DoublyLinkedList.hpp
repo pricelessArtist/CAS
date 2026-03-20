@@ -7,24 +7,28 @@
 
 struct Node {
     //previous Node Pointer
-    struct Node* previousNode = NULL;
+    Node* previousNode = nullptr;
 
     //node data value
     char element = NULL;
 
     //next Node Pointer
-    struct Node* nextNode = NULL;
+    Node* nextNode = nullptr;
+
+    Node(char nodeValue) {
+        element = nodeValue;
+    }
 };
 
 class DoubleLinkedList {
     private:
-        struct Node* firstNode; //first node of double linked list
-        struct Node* lastNode; //last node of the double linked list
+        Node* firstNode; //first node of double linked list
+        Node* lastNode; //last node of the double linked list
 
     public:
         DoubleLinkedList() {
-            firstNode = NULL;
-            lastNode = NULL;
+            firstNode = nullptr;
+            lastNode = nullptr;
         }
         
         Node* allocateNewNode(char nodeValue);

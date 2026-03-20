@@ -1,10 +1,13 @@
 #include <iostream>
 #include "./utils/DoublyLinkedList.hpp"
+#include "./utils/Algorithms/Abacus.hpp"
 using namespace std;
 
 int main() {
     DoubleLinkedList list;
-
+    DoubleLinkedList list2;
+    Abacus abacus;
+    
     list.insertNode('0');
     list.insertNodeBeforeHead('1');
     list.insertNodeAfter('2', '0');
@@ -12,13 +15,24 @@ int main() {
     list.insertNodeAfter('4', '3');
     list.insertNodeAfter('5', '4');
     list.insertNodeAfter('6', '5');
-    list.insertNodeBefore('a', '5');
+    list.insertNodeAfter('7', '6');
+    list.insertNodeAfter('8', '7');
+    list.insertNodeAfter('9', '8');
     list.iterateForward();
-    list.iterateBackwards();
-    list.deleteNode('a');
-    list.insertAtEnd('b');
-    list.insertAtEnd('c');
-    list.iterateForward();
-    list.iterateBackwards();
+
+    list2.insertNode('0');
+    list2.insertNodeBeforeHead('1');
+    list2.insertNodeAfter('2', '0');
+    list2.insertNodeAfter('3', '2');
+    list2.insertNodeAfter('4', '3');
+    list2.insertNodeAfter('5', '4');
+    list2.insertNodeAfter('6', '5');
+    list2.insertNodeAfter('7', '6');
+    list2.insertNodeAfter('8', '7');
+    list2.insertNodeAfter('9', '8');
+    list2.iterateForward();
+
+    abacus.Addition(list, list2, '2', '3');
+
     return 0;
 }
