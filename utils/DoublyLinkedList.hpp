@@ -22,10 +22,11 @@ struct Node {
 
 class DoubleLinkedList {
     private:
+    
+    public:
         Node* firstNode; //first node of double linked list
         Node* lastNode; //last node of the double linked list
-
-    public:
+        
         DoubleLinkedList() {
             firstNode = nullptr;
             lastNode = nullptr;

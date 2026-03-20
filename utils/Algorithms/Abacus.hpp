@@ -9,10 +9,10 @@
 
 struct Result {
     // current digit 
-    char digit;
+    Node* digit;
 
     // carry digit
-    char carry;
+    Node* carry;
 
     //checks if we have a carry, we return the carry digit
     bool isCarry;
@@ -21,9 +21,9 @@ struct Result {
 class Abacus {
     private:
     // leftPointer for leftLinked list 
-    char leftPointer;
+    Node* leftPointer = nullptr;
     // rightPointer for rightLinked list
-    char rightPointer;
+    Node* rightPointer = nullptr;
     // leftLinkedListBase for base number system, number of elements in the linkedList
     //  leftLinkedListBase for base number system, number of elements in the linkedList
     public:  

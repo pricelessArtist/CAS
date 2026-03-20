@@ -9,8 +9,8 @@ int main() {
     Abacus abacus;
     
     list.insertNode('0');
-    list.insertNodeBeforeHead('1');
-    list.insertNodeAfter('2', '0');
+    list.insertNodeAfter('1', '0');
+    list.insertNodeAfter('2', '1');
     list.insertNodeAfter('3', '2');
     list.insertNodeAfter('4', '3');
     list.insertNodeAfter('5', '4');
@@ -21,8 +21,8 @@ int main() {
     list.iterateForward();
 
     list2.insertNode('0');
-    list2.insertNodeBeforeHead('1');
-    list2.insertNodeAfter('2', '0');
+    list2.insertNodeAfter('1', '0');
+    list2.insertNodeAfter('2', '1');
     list2.insertNodeAfter('3', '2');
     list2.insertNodeAfter('4', '3');
     list2.insertNodeAfter('5', '4');
@@ -32,7 +32,6 @@ int main() {
     list2.insertNodeAfter('9', '8');
     list2.iterateForward();
 
-    abacus.Addition(list, list2, '2', '3');
-
+    abacus.Addition(list, list2, '3', '9');
     return 0;
 }

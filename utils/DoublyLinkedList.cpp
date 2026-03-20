@@ -6,7 +6,6 @@ DoubleLinkedList list;
 
 Node* DoubleLinkedList::allocateNewNode(char nodeValue) {
     Node* newNode = new Node(nodeValue);
-    
     return newNode;
 }
 
@@ -20,7 +19,7 @@ Node DoubleLinkedList::insertNode(char nodeValue) {
         lastNode = newNode;
     } else {
         Node* headNode = firstNode;
-        Node* nextNode = (Node *)realloc(newNode, sizeof(Node));
+        Node* nextNode = new Node(newNode->element);
         nextNode->element = nodeValue;
         nextNode->previousNode = headNode;
         headNode->nextNode = nextNode;
@@ -30,6 +29,8 @@ Node DoubleLinkedList::insertNode(char nodeValue) {
         cout << "Next node current value: " << nextNode->element << endl;
         cout << "Head node: " << headNode->element << endl;
         cout << " " << endl;
+
+        free(nextNode);
     } 
     
     
@@ -144,7 +145,6 @@ void DoubleLinkedList::iterateBackwards() {
 Node* DoubleLinkedList::deleteNode(char pickedNodeValue) {
     //we look for the pickedNodeValue and then get the nodes previous and nextNode
     Node* head = firstNode;
-    Node* removeNode;
 
     while (head != nullptr) {
         if (head->element == pickedNodeValue) {
