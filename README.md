@@ -7,8 +7,12 @@ An computer algebra system implemented math from scratch in C++ for learning pur
     - Tokenizer
 
 # Next Implementations
+    - Parser
+    - Abstract Syntax Tree
     - Abacus Algorithm
         - Addition, Subtraction, Division and Multiplication
+        - Solving Equations
+        - Graphing
 
 # TODOS
-    - Fix DoubleLinkedList allocation(in-progress)
+   - Fix DoubleLinkedList allocation(in-progress)
