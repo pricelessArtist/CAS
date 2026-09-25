@@ -1,37 +1,21 @@
 #include <iostream>
+#include <string>
 #include "./utils/DoublyLinkedList.hpp"
 #include "./utils/Algorithms/Abacus.hpp"
+#include "./utils/Scanner/Scanner.hpp"
 using namespace std;
 
 int main() {
-    DoubleLinkedList list;
-    DoubleLinkedList list2;
-    Abacus abacus;
+    vector<char> tokens;
+    string userInput;  
     
-    list.insertNode('0');
-    list.insertNodeAfter('1', '0');
-    list.insertNodeAfter('2', '1');
-    list.insertNodeAfter('3', '2');
-    list.insertNodeAfter('4', '3');
-    list.insertNodeAfter('5', '4');
-    list.insertNodeAfter('6', '5');
-    list.insertNodeAfter('7', '6');
-    list.insertNodeAfter('8', '7');
-    list.insertNodeAfter('9', '8');
-    list.iterateForward();
+    cout << "Enter math equation: " << endl;
+    cin >> userInput;
+    tokens = scan_tokens(userInput);
 
-    list2.insertNode('0');
-    list2.insertNodeAfter('1', '0');
-    list2.insertNodeAfter('2', '1');
-    list2.insertNodeAfter('3', '2');
-    list2.insertNodeAfter('4', '3');
-    list2.insertNodeAfter('5', '4');
-    list2.insertNodeAfter('6', '5');
-    list2.insertNodeAfter('7', '6');
-    list2.insertNodeAfter('8', '7');
-    list2.insertNodeAfter('9', '8');
-    list2.iterateForward();
+    for (auto token = tokens.begin(); token < tokens.end(); token++) {
+      cout << "Tokens: " << *token << endl;
+    }
 
-    abacus.Addition(list, list2, '7', '5');
     return 0;
 }
