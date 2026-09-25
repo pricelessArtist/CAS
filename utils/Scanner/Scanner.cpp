@@ -4,11 +4,10 @@
 using namespace std;
 
 vector<char> scan_tokens(string userInput) {
-  int size = userInput.length();
-  vector<char> tokens(size);
+  vector<char> tokens(userInput.length());
 
   //take userinput and break it down into an array
-  for (int i = 0; i < size; i++) {
+  for (size_t i = 0; i < userInput.length(); i++) {
     tokens[i] = userInput[i];
   }
 

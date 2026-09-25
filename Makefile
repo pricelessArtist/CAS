@@ -6,7 +6,8 @@ CXXFLAGS := -g -Wall -Wextra
 MAIN     := main.cpp
 UTILS    := utils/DoublyLinkedList.cpp \
             utils/Algorithms/Abacus.cpp \
-            utils/Scanner/Scanner.cpp
+            utils/Scanner/Scanner.cpp \
+						utils/Token/Token.cpp
 
 # Output build directory and executable name
 BUILD_DIR := build

@@ -1,20 +1,23 @@
 #include <iostream>
 #include <string>
-#include "./utils/DoublyLinkedList.hpp"
-#include "./utils/Algorithms/Abacus.hpp"
 #include "./utils/Scanner/Scanner.hpp"
+#include "utils/Token/Token.hpp"
 using namespace std;
 
 int main() {
     vector<char> tokens;
+    vector<Token> tokenList;
     string userInput;  
     
-    cout << "Enter math equation: " << endl;
+    cout << "Enter math equation: ";
     cin >> userInput;
     tokens = scan_tokens(userInput);
+    tokenList = tokenization(tokens);
 
-    for (auto token = tokens.begin(); token < tokens.end(); token++) {
-      cout << "Tokens: " << *token << endl;
+    for (auto listOfTokens = tokenList.begin(); listOfTokens != tokenList.end(); ++listOfTokens) {
+      cout << "Tokens value: " << (listOfTokens->token) << endl;
+      cout << "Token Type: " << (listOfTokens->tokenType) << endl;
+      cout << endl;
     }
 
     return 0;
