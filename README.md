@@ -3,6 +3,8 @@ An computer algebra system implemented math from scratch in C++ for learning pur
 
 # Current Implementations
     - Double Linked List
+    - Scanner
+    - Tokenizer
 
 # Next Implementations
     - Abacus Algorithm
