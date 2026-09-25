@@ -15,4 +15,4 @@ An computer algebra system implemented math from scratch in C++ for learning pur
         - Graphing
 
 # TODOS
-   - Fix DoubleLinkedList allocation(in-progress)
+    - Fix DoubleLinkedList allocation(in-progress)
